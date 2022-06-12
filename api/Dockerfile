@@ -1,10 +1,28 @@
+# Stage 1
+FROM node:lts-alpine as builder
+ENV NODE_ENV=development
+WORKDIR /usr/src/app
+RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY ./src ./src
+RUN chown -R node /usr/src/app
+RUN npm config set unsafe-perm true
+RUN npm install --location=global typescript
+USER node
+RUN npm install
+RUN npm run build
+
+# Stage 2
 FROM node:lts-alpine
 ENV NODE_ENV=production
 WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
-COPY . .
-EXPOSE 3000
+RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
+COPY package*.json ./
 RUN chown -R node /usr/src/app
 USER node
-CMD ["node", "index.js"]
+RUN npm ci --only=production --production --silent
+COPY --from=builder ./usr/src/app/dist ./dist
+
+EXPOSE 3000
+CMD ["npm", "run", "start"]
