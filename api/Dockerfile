@@ -4,14 +4,16 @@ ENV NODE_ENV=development
 WORKDIR /usr/src/app
 RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
 COPY package*.json ./
-COPY tsconfig.json ./
+COPY tsconfig*.json ./
+COPY jest.config.js ./
 COPY ./src ./src
 RUN chown -R node /usr/src/app
 RUN npm config set unsafe-perm true
 RUN npm install --location=global typescript
 USER node
-RUN npm install
-RUN npm run build
+RUN npm install && \
+    npm run build && \
+    npm run test
 
 # Stage 2
 FROM node:lts-alpine
