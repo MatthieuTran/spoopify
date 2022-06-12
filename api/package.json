@@ -18,5 +18,9 @@
   "homepage": "https://github.com/MatthieuTran/spoopify#readme",
   "dependencies": {
     "koa": "^2.13.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.42",
+    "typescript": "^4.7.3"
   }
 }
