@@ -1,0 +1,22 @@
+{
+  "name": "spoopify-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthieuTran/spoopify.git"
+  },
+  "author": "Matthieu Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthieuTran/spoopify/issues"
+  },
+  "homepage": "https://github.com/MatthieuTran/spoopify#readme",
+  "dependencies": {
+    "koa": "^2.13.4"
+  }
+}
