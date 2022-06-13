@@ -1,17 +1,12 @@
 import Koa from "koa";
-import Router from "koa-router";
 import connection from "./db";
-
-const app = new Koa();
-const router = new Router();
+import userRouter from "./routes/user.routes";
 
 connection();
 
-router.get("/", (ctx: Koa.Context) => {
-  ctx.body = "Hello World";
-});
+const app = new Koa();
 
-app.use(router.routes());
+app.use(userRouter.routes());
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port);
