@@ -14,9 +14,6 @@ async function connection() {
   try {
     connect(connectionString);
 
-    console.log("START");
-    console.log(process.env);
-    console.log("END" + process.env.MONGO_TEST_URI);
     console.info("Connected to MongoDB successfully.");
   } catch (error) {
     console.error("Could not connect to MongoDB.");
