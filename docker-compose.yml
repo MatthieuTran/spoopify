@@ -8,8 +8,6 @@ services:
     build:
       context: api
       dockerfile: ./Dockerfile
-      args:
-        - MONGO_TEST_URI=mongodb://${MONGODB_USER}:${MONGODB_PASS}@mongo:${MONGODB_TEST_PORT}/spoopify?authSource=admin
     environment:
       MONGO_URI: mongodb://${MONGODB_USER}:${MONGODB_PASS}@mongo:${MONGODB_PORT}/spoopify?authSource=admin
     ports:
@@ -24,20 +22,6 @@ services:
       - mongo-data:/data/db
     ports:
       - ${MONGODB_PORT}:27017
-    command: mongod --quiet --logpath /dev/null
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-
-  mongo_test:
-    image: mongo
-    env_file:
-      - ./.env
-    restart: on-failure
-    volumes:
-      - mongo-test-data:/data/db
-    ports:
-      - ${MONGODB_TEST_PORT}:27017
     command: mongod --quiet --logpath /dev/null
     environment:
       MONGO_INITDB_ROOT_USERNAME: root

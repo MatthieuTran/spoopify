@@ -4,7 +4,7 @@ export async function createUser(user: Record<string, unknown>) {
   return await UserRepository.create(user);
 }
 
-export async function fetchAllUsers(id: unknown) {
+export async function fetchAllUsers() {
   return await UserRepository.fetch({});
 }
 
@@ -23,8 +23,6 @@ export async function updateUser(
   return await UserRepository.updateOne(conditions, updates);
 }
 
-export async function deleteUser(conditions: Record<string, unknown>) {
-  return await UserRepository.deleteOne(conditions);
+export async function deleteUserById(id: unknown) {
+  return await UserRepository.deleteById(id);
 }
-
-export { UserRepository };

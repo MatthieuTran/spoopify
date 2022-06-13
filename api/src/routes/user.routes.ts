@@ -1,4 +1,5 @@
 import Router from "@koa/router";
+import koaBody from "koa-body";
 import {
   createUser,
   deleteUser,
@@ -12,11 +13,11 @@ const router = new Router({
   prefix: "/users",
 });
 
-router.post("/", createUser);
+router.post("/", koaBody(), createUser);
 router.get("/", getAllUsers);
 router.get("/:id", getUser);
-router.put("/:id", updateUser);
-router.patch("/:id", patchUser);
+router.put("/:id", koaBody(), updateUser);
+router.patch("/:id", koaBody(), patchUser);
 router.delete("/:id", deleteUser);
 
 export default router;

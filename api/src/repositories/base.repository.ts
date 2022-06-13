@@ -1,7 +1,11 @@
 import { Model, model } from "mongoose";
 
 export class BaseRepository {
-  #model: Model<unknown> = model("TBA");
+  #model: Model<unknown>;
+
+  constructor(model: Model<unknown>) {
+    this.#model = model;
+  }
 
   getModel() {
     return this.#model;

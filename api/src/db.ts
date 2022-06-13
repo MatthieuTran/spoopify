@@ -12,7 +12,7 @@ async function connection() {
   const connectionString = mongo_uri || "";
 
   try {
-    connect(connectionString);
+    await connect(connectionString);
 
     console.info("Connected to MongoDB successfully.");
   } catch (error) {
