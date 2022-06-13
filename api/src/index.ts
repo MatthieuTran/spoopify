@@ -1,8 +1,11 @@
 import Koa from "koa";
 import Router from "koa-router";
+import connection from "./db";
 
 const app = new Koa();
 const router = new Router();
+
+connection();
 
 router.get("/", (ctx: Koa.Context) => {
   ctx.body = "Hello World";

@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/MatthieuTran/spoopify#readme",
   "dependencies": {
+    "dotenv": "^16.0.1",
     "koa": "^2.13.4",
-    "koa-router": "^10.1.1"
+    "koa-router": "^10.1.1",
+    "mongoose": "^6.3.6"
   },
   "devDependencies": {
     "@types/chai": "^4.3.1",
@@ -36,7 +38,6 @@
     "chai-http": "^4.3.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
-    "i": "^0.3.7",
     "mocha": "^10.0.0",
     "supertest": "^6.2.3",
     "ts-mocha": "^10.0.0",

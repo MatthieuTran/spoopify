@@ -5,7 +5,6 @@ WORKDIR /usr/src/app
 RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
 COPY package*.json ./
 COPY tsconfig*.json ./
-COPY jest.config.js ./
 COPY ./src ./src
 RUN chown -R node /usr/src/app
 RUN npm config set unsafe-perm true

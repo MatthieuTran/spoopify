@@ -3,10 +3,30 @@ version: '3.4'
 services:
   spoopifyapi:
     image: spoopifyapi
+    env_file:
+      - ./.env
     build:
       context: api
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
+      MONGO_URI: mongodb://${MONGODB_USER}:${MONGODB_PASS}@mongo:${MONGODB_PORT}/spoopify?authSource=admin
     ports:
       - 3000:3000
+
+  mongo:
+    image: mongo
+    env_file:
+      - ./.env
+    restart: on-failure
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - ${MONGODB_PORT}:27017
+    command: mongod --quiet --logpath /dev/null
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+volumes:
+  mongo-data:
