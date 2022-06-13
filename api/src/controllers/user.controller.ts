@@ -1,4 +1,4 @@
-import { RouterContext } from "koa-router";
+import { RouterContext } from "@koa/router";
 
 async function createUser(ctx: RouterContext) {
   // On success
