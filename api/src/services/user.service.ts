@@ -23,7 +23,7 @@ export async function updateUser(
   return await UserRepository.updateOne(conditions, updates);
 }
 
-export async function deleteUser(conditions: Record<string, unknown) {
+export async function deleteUser(conditions: Record<string, unknown>) {
   return await UserRepository.deleteOne(conditions);
 }
 
